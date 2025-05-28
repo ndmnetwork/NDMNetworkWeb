@@ -4,43 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NDM Discord Bot</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white font-sans">
-
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-4">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">NDM Discord Bot</h1>
-    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-8">
-      Powering Giveaways, Tickets & More — a smart assistant for your community.
-    </p>
-    <a href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&permissions=8&scope=bot%20applications.commands" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition">
-      Invite to Server
-    </a>
+<body>
+  <section class="hero">
+    <h1>NDM Discord Bot</h1>
+    <p>Giveaways. Tickets. Power tools for your server.</p>
+    <a href="https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot%20applications.commands" target="_blank">Invite to Server</a>
   </section>
 
-  <!-- Features Section -->
-  <section class="bg-gray-800 py-16 px-4">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-      <div>
-        <h2 class="text-2xl font-semibold mb-2">Easy Giveaways</h2>
-        <p class="text-gray-400">Create, manage, and reroll giveaways with advanced controls and live updates.</p>
-      </div>
-      <div>
-        <h2 class="text-2xl font-semibold mb-2">Ticket System</h2>
-        <p class="text-gray-400">Users can submit tickets by category. Staff can respond, close, and log issues easily.</p>
-      </div>
-      <div>
-        <h2 class="text-2xl font-semibold mb-2">Custom Dashboards</h2>
-        <p class="text-gray-400">Use intuitive buttons and modals to streamline support and moderation.</p>
-      </div>
-    </div>
+  <section class="features">
+    <div><h2>Giveaways</h2><p>Live updating, reroll, end commands.</p></div>
+    <div><h2>Ticket System</h2><p>Multi-category support with transcripts.</p></div>
+    <div><h2>Custom UX</h2><p>Buttons, modals, and dynamic dashboards.</p></div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-500 text-center py-8">
+  <section class="commands" id="commands">
+    <h2>Available Commands</h2>
+    <ul id="command-list"></ul>
+  </section>
+
+  <section class="discord-widget">
+    <iframe src="https://discord.com/widget?id=YOUR_SERVER_ID&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+  </section>
+
+  <footer>
     &copy; 2025 NDM Bot. All rights reserved.
   </footer>
 
+  <script>
+    fetch("commands.json")
+      .then(res => res.json())
+      .then(commands => {
+        const list = document.getElementById("command-list");
+        commands.forEach(cmd => {
+          const item = document.createElement("li");
+          item.textContent = `/${cmd.name} - ${cmd.description}`;
+          list.appendChild(item);
+        });
+      });
+  </script>
 </body>
 </html>
