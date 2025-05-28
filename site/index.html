@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>NGINX on Railway</title>
-    <meta name="description" content="Choo Choo!" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NDM Discord Bot</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white font-sans">
 
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">NDM Discord Bot</h1>
+    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-8">
+      Powering Giveaways, Tickets & More — a smart assistant for your community.
+    </p>
+    <a href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&permissions=8&scope=bot%20applications.commands" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition">
+      Invite to Server
+    </a>
+  </section>
 
-    <link rel="stylesheet" href="/styles.css?v=1.0" />
-  </head>
+  <!-- Features Section -->
+  <section class="bg-gray-800 py-16 px-4">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+      <div>
+        <h2 class="text-2xl font-semibold mb-2">Easy Giveaways</h2>
+        <p class="text-gray-400">Create, manage, and reroll giveaways with advanced controls and live updates.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold mb-2">Ticket System</h2>
+        <p class="text-gray-400">Users can submit tickets by category. Staff can respond, close, and log issues easily.</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold mb-2">Custom Dashboards</h2>
+        <p class="text-gray-400">Use intuitive buttons and modals to streamline support and moderation.</p>
+      </div>
+    </div>
+  </section>
 
-  <body>
-    <main>
-      <img
-        src="https://railway.app/brand/logo-light.svg"
-        alt="Railway logo"
-        class="logo"
-      />
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-500 text-center py-8">
+    &copy; 2025 NDM Bot. All rights reserved.
+  </footer>
 
-      <h1>NGINX on Railway</h1>
-
-      <p>
-        Choo Choo! This is an example of an NGINX static site running on
-        Railway.
-        <a
-          href="https://github.com/railwayapp/starters/tree/master/examples/nginx"
-          >View source</a
-        >.
-      </p>
-    </main>
-
-    <script src="/script.js"></script>
-  </body>
+</body>
 </html>
