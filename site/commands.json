@@ -1,0 +1,6 @@
+[
+  { "name": "giveaway", "description": "Start a new giveaway" },
+  { "name": "end", "description": "Force end a giveaway" },
+  { "name": "ticket", "description": "Open a support ticket" },
+  { "name": "close", "description": "Close an active ticket" }
+]
