@@ -1,40 +1,38 @@
 body {
   margin: 0;
-  padding: 2rem;
-  background-color: hsl(250, 24%, 9%);
-  color: hsl(0, 0%, 100%);
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
-    helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+  font-family: system-ui, sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+  text-align: center;
 }
-
-main {
+.hero {
+  padding: 4rem 2rem;
+}
+.features {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: #181818;
+  padding: 2rem;
 }
-
-h1 {
-  font-size: 48px;
-  margin: 1rem 0;
+.features div {
+  width: 250px;
+  margin: 1rem;
 }
-
-.logo {
-  width: 8rem;
-  height: 8rem;
-  margin-bottom: 2rem;
+.commands {
+  background: #202020;
+  padding: 2rem;
 }
-
-p {
-  line-height: 1.6;
+.commands ul {
+  list-style: none;
+  padding: 0;
 }
-
-a {
-  color: hsl(270, 70%, 65%);
-  text-decoration: none;
+.commands li {
+  margin: 0.5rem 0;
 }
-
-a:hover {
-  text-decoration: underline;
+footer {
+  background: #111;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #aaa;
 }
