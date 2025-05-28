@@ -1,38 +1,70 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
   font-family: system-ui, sans-serif;
-  background: #0f0f0f;
+  background-color: #0f0f0f;
   color: #fff;
+}
+
+header {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4fd1c5;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #4fd1c5;
+}
+
+.section {
+  padding: 4rem 2rem;
   text-align: center;
 }
+
 .hero {
-  padding: 4rem 2rem;
-}
-.features {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
   background: #181818;
-  padding: 2rem;
 }
-.features div {
-  width: 250px;
-  margin: 1rem;
+
+.widget-container {
+  margin-top: 2rem;
 }
-.commands {
-  background: #202020;
-  padding: 2rem;
-}
-.commands ul {
-  list-style: none;
-  padding: 0;
-}
-.commands li {
-  margin: 0.5rem 0;
-}
+
 footer {
   background: #111;
-  padding: 1rem;
-  font-size: 0.9rem;
   color: #aaa;
+  padding: 1rem;
+  text-align: center;
 }
