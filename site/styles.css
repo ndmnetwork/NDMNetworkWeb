@@ -1,24 +1,32 @@
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --accent: #00bcd4;
+  --card: #222;
+  --nav: #181818;
+  --footer: #111;
 }
 
-html {
-  scroll-behavior: smooth;
+body.light {
+  --bg: #f9f9f9;
+  --text: #111;
+  --accent: #007bff;
+  --card: #ffffff;
+  --nav: #ffffff;
+  --footer: #f1f1f1;
 }
 
 body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
   font-family: system-ui, sans-serif;
-  background-color: #0f0f0f;
-  color: #ffffff;
   line-height: 1.6;
 }
 
 /* Navigation */
 header {
-  background-color: #181818;
+  background-color: var(--nav);
   padding: 1rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   position: sticky;
@@ -38,7 +46,7 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #00bcd4;
+  color: var(--accent);
 }
 
 .nav-links {
@@ -49,12 +57,26 @@ header {
 
 .nav-links li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--text);
   transition: color 0.3s;
 }
 
 .nav-links li a:hover {
-  color: #00bcd4;
+  color: var(--accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: color 0.3s;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
 }
 
 /* Main Section */
@@ -67,19 +89,19 @@ header {
 
 /* Services Section */
 .services {
-  background-color: #181818;
+  background-color: var(--nav);
   padding: 4rem 2rem;
   text-align: center;
 }
 
 .services h2 {
   font-size: 2.2rem;
-  color: #00bcd4;
+  color: var(--accent);
   margin-bottom: 1rem;
 }
 
 .services-description {
-  color: #ccc;
+  color: var(--text);
   max-width: 700px;
   margin: 0 auto 3rem auto;
   font-size: 1rem;
@@ -94,7 +116,7 @@ header {
 }
 
 .service-box {
-  background: #222;
+  background: var(--card);
   padding: 2rem 1rem;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -111,13 +133,13 @@ header {
 }
 
 .service-box h3 {
-  color: #00bcd4;
+  color: var(--accent);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
 .service-box p {
-  color: #ccc;
+  color: var(--text);
   font-size: 0.95rem;
   line-height: 1.4;
 }
@@ -126,7 +148,7 @@ header {
 footer {
   text-align: center;
   padding: 1rem;
-  background-color: #111;
+  background-color: var(--footer);
   color: #aaa;
   font-size: 0.9rem;
 }

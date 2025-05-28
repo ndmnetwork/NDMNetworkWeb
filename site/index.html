@@ -20,6 +20,7 @@
         <li><a href="status.html">Status</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
     </nav>
   </header>
 
@@ -30,50 +31,63 @@
   </main>
 
   <!-- Services Section -->
-<section class="section services">
-  <h2>Services</h2>
-  <p class="services-description">
-    Our bot suite is built to enhance Discord communities with powerful tools.
-  </p>
-  <div class="services-grid">
-    <div class="service-box">
-      <img src="https://via.placeholder.com/60" alt="Giveaway Icon" />
-      <h3>Giveaway Discord Bot</h3>
-      <p>Automated giveaways with rerolls, requirements, and real-time tracking.</p>
+  <section class="section services">
+    <h2>Services</h2>
+    <p class="services-description">
+      Our bot suite is built to enhance Discord communities with powerful tools.
+    </p>
+    <div class="services-grid">
+      <div class="service-box">
+        <img src="https://via.placeholder.com/60" alt="Giveaway Icon" />
+        <h3>Giveaway Bot</h3>
+        <p>Automated giveaways with rerolls, requirements, and real-time tracking.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://via.placeholder.com/60" alt="Ticket Icon" />
+        <h3>Ticket System</h3>
+        <p>Structured support categories, modals, logs, and private ticket channels.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://via.placeholder.com/60" alt="Status Icon" />
+        <h3>Status Monitoring</h3>
+        <p>Bot online/offline tracking with alerts and a public status page.</p>
+      </div>
     </div>
-    <div class="service-box">
-      <img src="https://via.placeholder.com/60" alt="Ticket Icon" />
-      <h3>Dedicated Support</h3>
-      <p>Structured support categories, modals, logs, and private ticket channels.</p>
-    </div>
-    <div class="service-box">
-      <img src="https://via.placeholder.com/60" alt="Status Icon" />
-      <h3>Status Monitoring</h3>
-      <p>Bot online/offline tracking with alerts and a public status page.</p>
-    </div>
-    <div class="service-box">
-      <img src="https://via.placeholder.com/60" alt="Moderation Icon" />
-      <h3>Auto Moderation</h3>
-      <p>Smart filters for spam, profanity, and user automation via roles.</p>
-    </div>
-    <div class="service-box">
-      <img src="https://via.placeholder.com/60" alt="Logging Icon" />
-      <h3>Event Logging</h3>
-      <p>Track joins, bans, message deletes, and admin actions in real time.</p>
-    </div>
-    <div class="service-box">
-      <img src="https://via.placeholder.com/60" alt="Analytics Icon" />
-      <h3>Server Insights</h3>
-      <p>View user engagement and bot usage metrics in clean dashboards.</p>
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- Footer -->
   <footer>
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
+
+  <!-- Dark/Light Mode Script -->
+  <script>
+    const toggleButton = document.getElementById('themeToggle');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) body.classList.add(savedTheme);
+
+    toggleButton.addEventListener('click', () => {
+      if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        toggleButton.textContent = '🌙';
+      } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+        toggleButton.textContent = '☀️';
+      }
+    });
+
+    if (body.classList.contains('light')) {
+      toggleButton.textContent = '☀️';
+    } else {
+      toggleButton.textContent = '🌙';
+    }
+  </script>
 
 </body>
 </html>
