@@ -2,47 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NDM Discord Bot</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <section class="hero">
-    <h1>NDM Discord Bot</h1>
-    <p>Giveaways. Tickets. Power tools for your server.</p>
-    <a href="https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot%20applications.commands" target="_blank">Invite to Server</a>
+  <header>
+    <nav class="navbar">
+      <div class="logo">NDM Bot</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#get">Get the Bot</a></li>
+        <li><a href="#server">Discord Server</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="section hero">
+    <h1>Welcome to NDM Discord Bot</h1>
+    <p>Powerful tools for managing giveaways, support tickets, and more.</p>
+    <div class="widget-container">
+      <iframe src="https://discord.com/widget?id=YOUR_SERVER_ID&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+    </div>
   </section>
 
-  <section class="features">
-    <div><h2>Giveaways</h2><p>Live updating, reroll, end commands.</p></div>
-    <div><h2>Ticket System</h2><p>Multi-category support with transcripts.</p></div>
-    <div><h2>Custom UX</h2><p>Buttons, modals, and dynamic dashboards.</p></div>
+  <section id="about" class="section">
+    <h2>About</h2>
+    <p>NDM Bot is built to simplify server management with interactive features and smart automation.</p>
   </section>
 
-  <section class="commands" id="commands">
-    <h2>Available Commands</h2>
-    <ul id="command-list"></ul>
+  <section id="get" class="section">
+    <h2>Get the Bot</h2>
+    <p><a href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot%20applications.commands" target="_blank">Click here to invite the bot</a> to your Discord server.</p>
   </section>
 
-  <section class="discord-widget">
-    <iframe src="https://discord.com/widget?id=YOUR_SERVER_ID&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+  <section id="server" class="section">
+    <h2>Discord Server</h2>
+    <p>Join our support server for help, updates, and community features.</p>
+    <p><a href="https://discord.gg/YOUR_INVITE" target="_blank">Join the server</a></p>
+  </section>
+
+  <section id="status" class="section">
+    <h2>Status</h2>
+    <p>Bot is online and running smoothly. Check status integrations or uptime monitoring tools here.</p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:support@ndmbot.com">support@ndmbot.com</a></p>
   </section>
 
   <footer>
     &copy; 2025 NDM Bot. All rights reserved.
   </footer>
-
-  <script>
-    fetch("commands.json")
-      .then(res => res.json())
-      .then(commands => {
-        const list = document.getElementById("command-list");
-        commands.forEach(cmd => {
-          const item = document.createElement("li");
-          item.textContent = `/${cmd.name} - ${cmd.description}`;
-          list.appendChild(item);
-        });
-      });
-  </script>
 </body>
 </html>
