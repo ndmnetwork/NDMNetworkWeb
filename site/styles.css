@@ -213,6 +213,11 @@ footer {
   animation: pulse 1.5s infinite;
 }
 
+.inline-indicator .online-indicator.offline {
+  background-color: #aaa;
+  animation: none;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(0, 255, 128, 0.7);
