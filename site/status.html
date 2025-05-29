@@ -137,6 +137,14 @@
 
   <!-- Bot status check -->
   <script>
+    function formatUptime(seconds) {
+      const days = Math.floor(seconds / 86400);
+      const hours = Math.floor((seconds % 86400) / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+      return `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
     async function checkStatus() {
       const statusEl = document.getElementById("status");
       try {
@@ -147,7 +155,7 @@
         statusEl.textContent = data.status === 'online' ? '✅ Online' : '❌ Offline';
         statusEl.className = data.status === 'online' ? 'status-value online' : 'status-value offline';
 
-        document.getElementById("uptime").textContent = `${data.uptimeSeconds}s`;
+        document.getElementById("uptime").textContent = formatUptime(data.uptimeSeconds);
         document.getElementById("servers").textContent = data.servers ?? '--';
         document.getElementById("latency").textContent = data.latency || '--';
         document.getElementById("memory").textContent = data.memoryMB || '--';
