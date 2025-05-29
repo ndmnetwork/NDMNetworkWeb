@@ -13,13 +13,13 @@
     <nav class="navbar">
       <div class="logo">NDM Network</div>
       <ul class="nav-links">
-        <li><a href="index.html"class="active">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li class="dropdown">
-        <a href="javascript:void(0)">Bots ▾</a>
-        <ul class="dropdown-content">
+          <a href="javascript:void(0)">Bots ▾</a>
+          <ul class="dropdown-content">
             <li><a href="giveaway.html">Giveaway</a></li>
             <li><a href="support.html">Support Team</a></li>
-        </ul>
+          </ul>
         </li>
         <li><a href="get.html">Get the Bot</a></li>
         <li><a href="server.html">Discord Server</a></li>
@@ -29,30 +29,6 @@
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
     </nav>
   </header>
-
-  <script>
-  async function updateOnlineIndicator() {
-    const indicator = document.getElementById("onlineIndicator");
-    try {
-      const res = await fetch("https://giveaway.up.railway.app/status");
-      const data = await res.json();
-      if (data.status === "online") {
-        indicator.classList.remove("offline");
-        indicator.classList.add("online");
-      } else {
-        indicator.classList.remove("online");
-        indicator.classList.add("offline");
-      }
-    } catch (e) {
-      indicator.classList.remove("online");
-      indicator.classList.add("offline");
-    }
-  }
-
-  updateOnlineIndicator();
-  setInterval(updateOnlineIndicator, 60000); // check every minute
-</script>
-
 
   <!-- Page Content -->
   <main class="section">
@@ -68,17 +44,16 @@
     </p>
     <div class="services-grid">
       <div class="service-box">
-      <img src="https://via.placeholder.com/60" alt="Giveaway Icon" />
-  
+        <img src="https://via.placeholder.com/60" alt="Giveaway Icon" />
         <h3>
-       <span class="inline-indicator">
-      <span id="onlineIndicator" class="online-indicator offline"></span>
-       </span>
-       Giveaway bot
-       </h3>
-      <h4>Coming Soon</h4>
-      <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
-      <p>Automated giveaways with rerolls, requirements, and real-time tracking.</p>
+          <span class="inline-indicator">
+            <span id="onlineIndicatorGiveaway" class="online-indicator offline"></span>
+          </span>
+          Giveaway bot
+        </h3>
+        <h4>Coming Soon</h4>
+        <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
+        <p>Automated giveaways with rerolls, requirements, and real-time tracking.</p>
       </div>
 
       <div class="service-box">
@@ -86,6 +61,7 @@
         <h3>Ticket System</h3>
         <p>Structured support categories, modals, logs, and private ticket channels.</p>
       </div>
+
       <div class="service-box">
         <img src="https://via.placeholder.com/60" alt="Status Icon" />
         <h3>Status Monitoring</h3>
@@ -103,7 +79,6 @@
   <script>
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
-
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) body.classList.add(savedTheme);
 
@@ -121,11 +96,31 @@
       }
     });
 
-    if (body.classList.contains('light')) {
-      toggleButton.textContent = '☀️';
-    } else {
-      toggleButton.textContent = '🌙';
+    toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
+  </script>
+
+  <!-- Online Indicator Script -->
+  <script>
+    async function updateOnlineIndicator() {
+      const indicator = document.getElementById("onlineIndicatorGiveaway");
+      try {
+        const res = await fetch("https://giveaway.up.railway.app/status");
+        const data = await res.json();
+        if (data.status === "online") {
+          indicator.classList.remove("offline");
+          indicator.classList.add("online");
+        } else {
+          indicator.classList.remove("online");
+          indicator.classList.add("offline");
+        }
+      } catch (e) {
+        indicator.classList.remove("online");
+        indicator.classList.add("offline");
+      }
     }
+
+    updateOnlineIndicator();
+    setInterval(updateOnlineIndicator, 60000);
   </script>
 
 </body>
