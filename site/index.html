@@ -100,28 +100,30 @@
   </script>
 
   <!-- Online Indicator Script -->
-  <script>
-    async function updateOnlineIndicator() {
-      const indicator = document.getElementById("onlineIndicatorGiveaway");
-      try {
-        const res = await fetch("https://giveaway.up.railway.app/status");
-        const data = await res.json();
-        if (data.status === "online") {
-          indicator.classList.remove("offline");
-          indicator.classList.add("online");
-        } else {
-          indicator.classList.remove("online");
-          indicator.classList.add("offline");
-        }
-      } catch (e) {
+<script>
+  const indicator = document.getElementById("onlineIndicatorGiveaway");
+
+  async function updateOnlineIndicator() {
+    try {
+      const res = await fetch("https://giveaway.up.railway.app/status");
+      const data = await res.json();
+      if (data.status === "online") {
+        indicator.classList.remove("offline");
+        indicator.classList.add("online");
+      } else {
         indicator.classList.remove("online");
         indicator.classList.add("offline");
       }
+    } catch {
+      indicator.classList.remove("online");
+      indicator.classList.add("offline");
     }
+  }
 
-    updateOnlineIndicator();
-    setInterval(updateOnlineIndicator, 60000);
-  </script>
+  updateOnlineIndicator();
+  setInterval(updateOnlineIndicator, 60000);
+</script>
+
 
 </body>
 </html>
