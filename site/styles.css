@@ -190,3 +190,36 @@ footer {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.online-indicator-wrapper {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.online-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #aaa;
+  box-shadow: 0 0 0 rgba(0, 255, 128, 0.4);
+  animation: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.online-indicator.online {
+  background-color: #00ff99;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 128, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 255, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 128, 0);
+  }
+}
