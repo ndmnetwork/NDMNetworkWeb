@@ -68,7 +68,7 @@
   <script>
     async function checkStatus() {
       try {
-        const res = await fetch("https://giveaway-public-production.up.railway.app/status"); // Replace with your endpoint
+        const res = await fetch("https://giveaway.up.railway.app/status"); // Replace with your endpoint
         const data = await res.json();
 
         document.getElementById("botName").textContent = data.botName || 'N/A';
