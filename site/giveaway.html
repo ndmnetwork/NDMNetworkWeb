@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NDM Network UK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NDM Giveaway Bot</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
     <nav class="navbar">
       <div class="logo">NDM Network</div>
       <ul class="nav-links">
-        <li><a href="index.html"class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li class="dropdown">
         <a href="javascript:void(0)">Bots ▾</a>
         <ul class="dropdown-content">
@@ -30,47 +30,49 @@
     </nav>
   </header>
 
-  <!-- Page Content -->
+  <!-- About Content -->
   <main class="section">
-    <h1>Welcome to NDM Network UK.</h1>
-    <p>We will be adding to this as we grow the services we provide.</p>
-  </main>
-
-  <!-- Services Section -->
-  <section class="section services">
-    <h2>Services</h2>
-    <p class="services-description">
-      Our bot suite is built to enhance Discord communities with powerful tools.
+    <h1>About the Public Giveaway Bot</h1>
+    <p style="max-width: 800px; margin: 0 auto;">
+      The Public Giveaway Bot by NDM Network is a powerful and user-friendly tool built to run seamless Discord giveaways.
+      With smart automation, real-time updates, and rerolling, it's the perfect assistant for community engagement and promotional events.
     </p>
-    <div class="services-grid">
-      <div class="service-box">
-        <img src="https://via.placeholder.com/60" alt="Giveaway Icon" />
-        <h3>Giveaway Bot</h3>
-        <p>Automated giveaways with rerolls, requirements, and real-time tracking.</p>
-      </div>
-      <div class="service-box">
-        <img src="https://via.placeholder.com/60" alt="Ticket Icon" />
-        <h3>Ticket System</h3>
-        <p>Structured support categories, modals, logs, and private ticket channels.</p>
-      </div>
-      <div class="service-box">
-        <img src="https://via.placeholder.com/60" alt="Status Icon" />
-        <h3>Status Monitoring</h3>
-        <p>Bot online/offline tracking with alerts and a public status page.</p>
-      </div>
+
+    <br /><br />
+
+    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+      <h2>🔹 Core Features</h2>
+      <ul style="line-height: 1.8;">
+        <li>🎁 Slash command-based giveaway creation</li>
+        <li>⏰ Real-time countdown timers with live status</li>
+        <li>🔁 Manual or auto rerolling</li>
+        <li>🔒 Entry requirements (roles, server join date, etc.)</li>
+        <li>📬 Claim buttons and winner DM notifications</li>
+        <li>📝 Persistent giveaways via database support</li>
+      </ul>
+
+      <h2>🔹 Why It’s Public</h2>
+      <p>
+        We believe in open, accessible tools. That’s why the bot is free to use and maintained with transparency. You can join our Discord
+        to suggest features, report bugs, or contribute to development.
+      </p>
+
+      <h2>🔹 Built With</h2>
+      <p>
+        Developed using <strong>Discord.js</strong> and hosted on <strong>Railway</strong>, the bot is designed for stability and speed.
+      </p>
     </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer>
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
 
-  <!-- Dark/Light Mode Script -->
+  <!-- Theme Toggle Script -->
   <script>
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
-
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) body.classList.add(savedTheme);
 
