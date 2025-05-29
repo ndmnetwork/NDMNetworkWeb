@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NDM Network UK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – NDM Giveaway Bot</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -14,25 +14,82 @@
       <div class="logo">NDM Network</div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html" class="active">About</a></li>
         <li><a href="get.html">Get the Bot</a></li>
         <li><a href="server.html">Discord Server</a></li>
         <li><a href="status.html">Status</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
     </nav>
   </header>
 
-  <!-- Page Content -->
+  <!-- About Content -->
   <main class="section">
-    <h1>Welcome to NDM Network UK.</h1>
-    <p>We will be adding to this as we grow the services we provide.</p>
+    <h1>About the Public Giveaway Bot</h1>
+    <p style="max-width: 800px; margin: 0 auto;">
+      The Public Giveaway Bot by NDM Network is a powerful and user-friendly tool built to run seamless Discord giveaways.
+      With smart automation, real-time updates, and rerolling, it's the perfect assistant for community engagement and promotional events.
+    </p>
+
+    <br /><br />
+
+    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+      <h2>🔹 Core Features</h2>
+      <ul style="line-height: 1.8;">
+        <li>🎁 Slash command-based giveaway creation</li>
+        <li>⏰ Real-time countdown timers with live status</li>
+        <li>🔁 Manual or auto rerolling</li>
+        <li>🔒 Entry requirements (roles, server join date, etc.)</li>
+        <li>📬 Claim buttons and winner DM notifications</li>
+        <li>📝 Persistent giveaways via database support</li>
+      </ul>
+
+      <h2>🔹 Why It’s Public</h2>
+      <p>
+        We believe in open, accessible tools. That’s why the bot is free to use and maintained with transparency. You can join our Discord
+        to suggest features, report bugs, or contribute to development.
+      </p>
+
+      <h2>🔹 Built With</h2>
+      <p>
+        Developed using <strong>Discord.js</strong> and hosted on <strong>Railway</strong>, the bot is designed for stability and speed.
+      </p>
+    </div>
   </main>
 
   <!-- Footer -->
   <footer>
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const toggleButton = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) body.classList.add(savedTheme);
+
+    toggleButton.addEventListener('click', () => {
+      if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        toggleButton.textContent = '🌙';
+      } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+        toggleButton.textContent = '☀️';
+      }
+    });
+
+    if (body.classList.contains('light')) {
+      toggleButton.textContent = '☀️';
+    } else {
+      toggleButton.textContent = '🌙';
+    }
+  </script>
 
 </body>
 </html>
