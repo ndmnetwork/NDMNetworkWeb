@@ -8,37 +8,37 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">NDM Network</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-        <a href="javascript:void(0)">Bots ▾</a>
-        <ul class="dropdown-content">
-            <li><a href="giveaway.html">Giveaway</a></li>
-            <li><a href="support.html">Support Team</a></li>
-        </ul>
-        </li>
-        <li><a href="get.html">Get the Bot</a></li>
-        <li><a href="server.html">Discord Server</a></li>
-        <li><a href="status.html"class="active">Status</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Page Content -->
-  <main class="section">
-    <h1>Welcome to NDM Network UK.</h1>
-    <p>We will be adding to this as we grow the services we provide.</p>
+<main class="section">
+    <h1>Bot Status</h1>
+    <p id="status">Checking...</p>
+    <p id="last-check"></p>
   </main>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
 
+  <script>
+    const statusText = document.getElementById('status');
+    const lastCheck = document.getElementById('last-check');
+
+    async function checkStatus() {
+      try {
+        const response = await fetch("https://discord.com/api/v10/gateway");
+        if (response.ok) {
+          statusText.textContent = "✅ Online (API reachable)";
+        } else {
+          statusText.textContent = "⚠️ Unstable or unreachable";
+        }
+      } catch (err) {
+        statusText.textContent = "❌ Offline (Discord API unreachable)";
+      }
+
+      lastCheck.textContent = "Last checked: " + new Date().toLocaleString();
+    }
+
+    checkStatus();
+    setInterval(checkStatus, 60000); // check every minute
+  </script>
 </body>
 </html>
