@@ -42,6 +42,14 @@
       color: #fff;
     }
 
+    .offline {
+      color: #ff5c5c;
+    }
+
+    .online {
+      color: #00ff99;
+    }
+
     footer {
       margin-top: 3rem;
       color: #888;
@@ -67,25 +75,29 @@
 
   <script>
     async function checkStatus() {
+      const statusEl = document.getElementById("status");
       try {
-        const res = await fetch("https://giveaway.up.railway.app/status"); // Replace with your endpoint
+        const res = await fetch("https://giveaway.up.railway.app/status");
         const data = await res.json();
 
         document.getElementById("botName").textContent = data.botName || 'N/A';
-        document.getElementById("status").textContent = data.status === 'online' ? '✅ Online' : '❌ Offline';
+        statusEl.textContent = data.status === 'online' ? '✅ Online' : '❌ Offline';
+        statusEl.className = data.status === 'online' ? 'status-value online' : 'status-value offline';
+
         document.getElementById("uptime").textContent = `${data.uptimeSeconds}s`;
-        document.getElementById("servers").textContent = data.servers ?? 'N/A';
-        document.getElementById("latency").textContent = data.latency || 'N/A';
-        document.getElementById("memory").textContent = data.memoryMB || 'N/A';
+        document.getElementById("servers").textContent = data.servers ?? '--';
+        document.getElementById("latency").textContent = data.latency || '--';
+        document.getElementById("memory").textContent = data.memoryMB || '--';
         document.getElementById("lastCheck").textContent = new Date().toLocaleString();
       } catch (err) {
-        document.getElementById("status").textContent = "❌ Unreachable";
+        statusEl.textContent = "❌ Unreachable";
+        statusEl.className = "status-value offline";
         document.getElementById("lastCheck").textContent = new Date().toLocaleString();
       }
     }
 
     checkStatus();
-    setInterval(checkStatus, 60000); // Refresh every 60s
+    setInterval(checkStatus, 60000); // refresh every 60s
   </script>
 
 </body>
