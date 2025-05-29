@@ -11,12 +11,13 @@
       color: #fff;
       font-family: system-ui, sans-serif;
       text-align: center;
-      padding: 2rem;
+      padding: 0;
+      margin: 0;
     }
 
     .dashboard {
       max-width: 600px;
-      margin: auto;
+      margin: 4rem auto 2rem auto;
       background: #181818;
       padding: 2rem;
       border-radius: 10px;
@@ -55,10 +56,71 @@
       color: #888;
       font-size: 0.9rem;
     }
+
+    /* Dropdown styles */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--card, #222);
+      min-width: 150px;
+      top: 100%;
+      left: 0;
+      z-index: 1001;
+      border-radius: 6px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .dropdown-content li {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--text, #fff);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--accent, #00bcd4);
+      color: #fff;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">NDM Network</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">Bots ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="giveaway.html">Giveaway</a></li>
+            <li><a href="support.html">Support Team</a></li>
+          </ul>
+        </li>
+        <li><a href="get.html">Get the Bot</a></li>
+        <li><a href="server.html">Discord Server</a></li>
+        <li><a href="status.html" class="active">Status</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
+    </nav>
+  </header>
+
+  <!-- Bot Status Dashboard -->
   <div class="dashboard">
     <h1>NDM Bot Status</h1>
 
@@ -73,6 +135,7 @@
 
   <footer>&copy; 2025 NDM Network UK. All rights reserved.</footer>
 
+  <!-- Bot status check -->
   <script>
     async function checkStatus() {
       const statusEl = document.getElementById("status");
@@ -98,6 +161,30 @@
 
     checkStatus();
     setInterval(checkStatus, 60000); // refresh every 60s
+  </script>
+
+  <!-- Dark/Light Theme Toggle -->
+  <script>
+    const toggleButton = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) body.classList.add(savedTheme);
+
+    toggleButton.addEventListener('click', () => {
+      if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        toggleButton.textContent = '🌙';
+      } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+        toggleButton.textContent = '☀️';
+      }
+    });
+
+    toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
   </script>
 
 </body>
