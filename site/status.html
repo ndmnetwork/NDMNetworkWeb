@@ -3,42 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NDM Network UK</title>
+  <title>NDM Bot Status</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .dashboard {
+      max-width: 600px;
+      margin: auto;
+      background: #181818;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    .dashboard h1 {
+      color: #00bcd4;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-item {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .status-label {
+      font-weight: bold;
+      color: #aaa;
+    }
+
+    .status-value {
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 3rem;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
-<main class="section">
-    <h1>Bot Status</h1>
-    <p id="status">Checking...</p>
-    <p id="last-check"></p>
-  </main>
+  <div class="dashboard">
+    <h1>NDM Bot Status</h1>
 
-  <footer>
-    &copy; 2025 NDM Network UK. All rights reserved.
-  </footer>
+    <div class="status-item"><span class="status-label">Bot Name:</span> <span id="botName" class="status-value">Loading...</span></div>
+    <div class="status-item"><span class="status-label">Status:</span> <span id="status" class="status-value">Checking...</span></div>
+    <div class="status-item"><span class="status-label">Uptime:</span> <span id="uptime" class="status-value">--</span></div>
+    <div class="status-item"><span class="status-label">Servers:</span> <span id="servers" class="status-value">--</span></div>
+    <div class="status-item"><span class="status-label">Latency:</span> <span id="latency" class="status-value">--</span></div>
+    <div class="status-item"><span class="status-label">Memory:</span> <span id="memory" class="status-value">--</span></div>
+    <div class="status-item"><span class="status-label">Last Checked:</span> <span id="lastCheck" class="status-value">--</span></div>
+  </div>
+
+  <footer>&copy; 2025 NDM Network UK. All rights reserved.</footer>
 
   <script>
-    const statusText = document.getElementById('status');
-    const lastCheck = document.getElementById('last-check');
-
     async function checkStatus() {
       try {
-        const response = await fetch("https://discord.com/api/v10/gateway");
-        if (response.ok) {
-          statusText.textContent = "✅ Online (API reachable)";
-        } else {
-          statusText.textContent = "⚠️ Unstable or unreachable";
-        }
-      } catch (err) {
-        statusText.textContent = "❌ Offline (Discord API unreachable)";
-      }
+        const res = await fetch("https://your-bot.up.railway.app/status"); // Replace with your endpoint
+        const data = await res.json();
 
-      lastCheck.textContent = "Last checked: " + new Date().toLocaleString();
+        document.getElementById("botName").textContent = data.botName || 'N/A';
+        document.getElementById("status").textContent = data.status === 'online' ? '✅ Online' : '❌ Offline';
+        document.getElementById("uptime").textContent = `${data.uptimeSeconds}s`;
+        document.getElementById("servers").textContent = data.servers ?? 'N/A';
+        document.getElementById("latency").textContent = data.latency || 'N/A';
+        document.getElementById("memory").textContent = data.memoryMB || 'N/A';
+        document.getElementById("lastCheck").textContent = new Date().toLocaleString();
+      } catch (err) {
+        document.getElementById("status").textContent = "❌ Unreachable";
+        document.getElementById("lastCheck").textContent = new Date().toLocaleString();
+      }
     }
 
     checkStatus();
-    setInterval(checkStatus, 60000); // check every minute
+    setInterval(checkStatus, 60000); // Refresh every 60s
   </script>
+
 </body>
 </html>
