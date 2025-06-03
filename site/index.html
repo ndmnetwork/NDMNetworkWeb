@@ -1,9 +1,20 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NDM Network UK</title>
+
+  <!-- FontAwesome (for icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pb/VkkRUYI/jVHqZ30DWcXG5VXgW7h0l0pjIVRqdV+vwlM1dwqsZBlHjWUwELnrqoYuZwWv+1M6NSpMChsVSvA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Your existing stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -30,29 +41,29 @@
     </nav>
   </header>
 
-  <!-- Page Content -->
-<main id="main" class="hero">
-  <div class="hero-content">
-    <h1>Welcome to NDM Network UK.</h1>
-    <!-- One-line pitch, ≤8 words -->
-    <p class="hero-tagline">
-      Automate giveaways, tickets & status alerts—effortlessly.
-    </p>
-    <!-- Add to Discord CTA -->
-    <a
-      href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot%20applications.commands&permissions=8"
-      class="btn btn-discord"
-      role="button"
-    >
-      <img
-        src="https://cdn.jsdelivr.net/gh/discordbranding/branding-assets/Logos/Discord-Logo-White.svg"
-        alt="Discord Logo"
-        class="btn-icon"
-      />
-      Add to Discord
-    </a>
-  </div>
-</main>
+  <!-- Hero Section -->
+  <main id="main" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to NDM Network UK.</h1>
+      <!-- One-line pitch, ≤8 words -->
+      <p class="hero-tagline">
+        Automate giveaways, tickets & status alerts—effortlessly.
+      </p>
+      <!-- Add to Discord CTA -->
+      <a
+        href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot%20applications.commands&permissions=8"
+        class="btn btn-discord"
+        role="button"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/gh/discordbranding/branding-assets/Logos/Discord-Logo-White.svg"
+          alt="Discord Logo"
+          class="btn-icon"
+        />
+        Add to Discord
+      </a>
+    </div>
+  </main>
 
   <!-- Services Section -->
   <section class="section services">
@@ -61,41 +72,74 @@
       Our bot suite is built to enhance Discord communities with powerful tools.
     </p>
     <div class="services-grid">
+
+      <!-- ====== Giveaway Bot Card (UPDATED) ====== -->
       <div class="service-box">
-        <img src="https://via.placeholder.com/60" alt="Giveaway Icon" />
+        <!-- Replaced placeholder image with a FontAwesome icon -->
+        <i
+          class="fas fa-gift"
+          style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;"
+        ></i>
+
         <h3>
           <span class="inline-indicator">
             <span id="onlineIndicatorGiveaway" class="online-indicator offline"></span>
           </span>
-          Giveaway bot
+          Giveaway Bot
         </h3>
         <h4>Coming Soon</h4>
         <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
-        <a
-      href="https://discord.com/oauth2/authorize?client_id=1365054686708764703"
-      class="btn btn-discord"
-      role="button"
-    >
-      <img
-        src="https://cdn.jsdelivr.net/gh/discordbranding/branding-assets/Logos/Discord-Logo-White.svg"
-        alt="Discord Logo"
-        class="btn-icon"
-      />
-      Add to Discord
-    </a>
-      </div>
 
+        <!-- ====== NEW: Server & User Count Block ====== -->
+        <div class="service-stats" style="margin: 1rem 0; font-size: 0.95rem;">
+          <span
+            class="stat"
+            style="display: inline-flex; align-items: center; margin-right: 1rem;"
+          >
+            <i class="fas fa-server" style="margin-right: 0.25rem;"></i>
+            <span id="giveawayServerCount">—</span> servers
+          </span>
+          <span
+            class="stat"
+            style="display: inline-flex; align-items: center;"
+          >
+            <i class="fas fa-users" style="margin-right: 0.25rem;"></i>
+            <span id="giveawayUserCount">—</span> users
+          </span>
+        </div>
+        <!-- ====== END Server & User Count ====== -->
+
+        <a
+          href="https://discord.com/oauth2/authorize?client_id=1365054686708764703&scope=bot%20applications.commands&permissions=8"
+          class="btn btn-discord"
+          role="button"
+        >
+          <img
+            src="https://cdn.jsdelivr.net/gh/discordbranding/branding-assets/Logos/Discord-Logo-White.svg"
+            alt="Discord Logo"
+            class="btn-icon"
+            style="width: 1rem; margin-right: 0.5rem;"
+          />
+          Add to Discord
+        </a>
+      </div>
+      <!-- ====== End Giveaway Bot Card ====== -->
+
+
+      <!-- Support Team Bot Card (unchanged) -->
       <div class="service-box">
         <img src="https://via.placeholder.com/60" alt="Ticket Icon" />
         <h3>Support Team Bot</h3>
-        <p>Primarily a Ticket Support Bot, More things will be added as the bot stabalises.</p>
+        <p>Primarily a Ticket Support Bot—more features coming as it stabilizes.</p>
       </div>
 
+      <!-- Status Monitoring Bot Card (unchanged) -->
       <div class="service-box">
         <img src="https://via.placeholder.com/60" alt="Status Icon" />
         <h3>Status Monitoring</h3>
         <p>Bot online/offline tracking with alerts and a public status page.</p>
       </div>
+
     </div>
   </section>
 
@@ -104,7 +148,9 @@
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
 
-  <!-- Dark/Light Mode Script -->
+  <!--────────────────────────────────────────────────────────────────────────
+    Dark/Light Mode Toggle Script
+  ────────────────────────────────────────────────────────────────────────-->
   <script>
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
@@ -128,31 +174,54 @@
     toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
   </script>
 
-  <!-- Online Indicator Script -->
-<script>
-  const indicator = document.getElementById("onlineIndicatorGiveaway");
-
-  async function updateOnlineIndicator() {
-    try {
-      const res = await fetch("https://giveaway.up.railway.app/status");
-      const data = await res.json();
-      if (data.status === "online") {
-        indicator.classList.remove("offline");
-        indicator.classList.add("online");
-      } else {
+  <!--────────────────────────────────────────────────────────────────────────
+    Online Indicator + Server/User Count Script
+  ────────────────────────────────────────────────────────────────────────-->
+  <script>
+    // Online Indicator for Giveaway Bot
+    const indicator = document.getElementById("onlineIndicatorGiveaway");
+    async function updateOnlineIndicator() {
+      try {
+        const res = await fetch("https://giveaway.up.railway.app/status");
+        const data = await res.json();
+        if (data.status === "online") {
+          indicator.classList.remove("offline");
+          indicator.classList.add("online");
+        } else {
+          indicator.classList.remove("online");
+          indicator.classList.add("offline");
+        }
+      } catch {
+        // If fetch fails, show offline indicator
         indicator.classList.remove("online");
         indicator.classList.add("offline");
       }
-    } catch {
-      indicator.classList.remove("online");
-      indicator.classList.add("offline");
     }
-  }
+    updateOnlineIndicator();
+    setInterval(updateOnlineIndicator, 60000);
 
-  updateOnlineIndicator();
-  setInterval(updateOnlineIndicator, 60000);
-</script>
+    // Server/User Counts for Giveaway Bot
+    const serverCountEl = document.getElementById('giveawayServerCount');
+    const userCountEl   = document.getElementById('giveawayUserCount');
 
+    async function updateGiveawayStats() {
+      try {
+        // Replace with your real endpoint that returns JSON: { servers: number, users: number }
+        const res  = await fetch('https://api.example.com/botstats');
+        const data = await res.json();
+        serverCountEl.textContent = data.servers.toLocaleString();
+        userCountEl.textContent   = data.users.toLocaleString();
+      } catch (err) {
+        console.warn('Could not fetch bot stats:', err);
+        serverCountEl.textContent = 'N/A';
+        userCountEl.textContent   = 'N/A';
+      }
+    }
+
+    // Initial fetch + poll every 60 seconds
+    updateGiveawayStats();
+    setInterval(updateGiveawayStats, 60000);
+  </script>
 
 </body>
 </html>
