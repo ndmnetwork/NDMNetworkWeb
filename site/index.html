@@ -207,7 +207,7 @@ a<!DOCTYPE html>
     async function updateGiveawayStats() {
       try {
         // Replace with your real endpoint that returns JSON: { servers: number, users: number }
-        const res  = await fetch('https://api.example.com/botstats');
+        const res  = await fetch('https://giveaway.up.railway.app/status');
         const data = await res.json();
         serverCountEl.textContent = data.servers.toLocaleString();
         userCountEl.textContent   = data.users.toLocaleString();
