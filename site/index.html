@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NDM Network UK</title>
 
-  <!-- Favicon -->
+  <!-- Favicon (replace with your actual path) -->
   <link rel="icon" href="https://yourdomain.com/favicon.ico" />
 
-  <!-- Meta Description for SEO & Social -->
+  <!-- Meta Description -->
   <meta
     name="description"
     content="NDM Network UK—automate giveaways, ticket support & status alerts on Discord."
@@ -27,7 +27,7 @@
   <meta property="og:url" content="https://ndmnetwork.uk/" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Google Font (Inter) -->
+  <!-- Google Font “Inter” -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -35,69 +35,21 @@
     rel="stylesheet"
   />
 
-  <!-- FontAwesome for icons -->
+  <!-- FontAwesome (for icons) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-xxxxxx"
+    integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
 
-  <!-- Inline Base Styles & CSS Variables -->
-  <style>
-    :root {
-      --font-sans: 'Inter', sans-serif;
-      --color-bg: #f9f9f9;
-      --color-bg-accent: #ffffff;
-      --color-text: #222222;
-      --color-text-muted: #555555;
-      --color-primary: #5865f2;
-      --color-primary-hover: #4854c4;
-      --radius-sm: 0.25rem;
-      --radius-md: 0.5rem;
-      --transition-fast: 0.2s ease-in-out;
-    }
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-sans);
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      scroll-behavior: smooth;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color var(--transition-fast);
-    }
-    a:hover {
-      color: var(--color-primary);
-    }
-    /* Skip-to-Content Link */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 16px;
-      background: var(--color-primary);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      z-index: 1000;
-      border-radius: var(--radius-sm);
-      transition: top var(--transition-fast);
-    }
-    .skip-link:focus {
-      top: 16px;
-    }
-  </style>
-
-  <!-- Your external stylesheet -->
+  <!-- Link to your CSS file -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Skip-to-Content -->
+  <!-- Skip-to-Content for Accessibility -->
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Navigation -->
@@ -160,7 +112,7 @@
       <div class="service-box">
         <i
           class="fas fa-gift"
-          style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem;"
+          style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;"
         ></i>
         <h3>
           <span class="inline-indicator">
@@ -169,9 +121,7 @@
           Giveaway Bot
         </h3>
         <h4>Coming Soon</h4>
-        <p>
-          Slash commands for easy giveaway setup, real-time updates, and rerolls.
-        </p>
+        <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
         <a
           href="https://discord.com/oauth2/authorize?client_id=1365054686708764703&scope=bot%20applications.commands&permissions=8"
           class="btn btn-discord"
@@ -191,20 +141,19 @@
       <div class="service-box">
         <i
           class="fas fa-life-ring"
-          style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem;"
+          style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;"
         ></i>
         <h3>Support Team Bot</h3>
         <p>
           Primarily a ticket-support bot—more features coming as it stabilizes.
         </p>
-        <!-- You can add a “Learn More” or “Add to Discord” here if desired. -->
       </div>
 
       <!-- Status Monitoring Bot Card -->
       <div class="service-box">
         <i
           class="fas fa-chart-line"
-          style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem;"
+          style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;"
         ></i>
         <h3>Status Monitoring</h3>
         <p>
@@ -290,25 +239,25 @@
     });
 
     // Dark/Light Mode Toggle
-    const toggleButton = document.getElementById('themeToggle');
-    const body = document.body;
+    const toggleBtn = document.getElementById('themeToggle');
+    const bodyEl = document.body;
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) body.classList.add(savedTheme);
+    if (savedTheme) bodyEl.classList.add(savedTheme);
 
-    toggleButton.addEventListener('click', () => {
-      if (body.classList.contains('light')) {
-        body.classList.remove('light');
-        body.classList.add('dark');
+    toggleBtn.addEventListener('click', () => {
+      if (bodyEl.classList.contains('light')) {
+        bodyEl.classList.remove('light');
+        bodyEl.classList.add('dark');
         localStorage.setItem('theme', 'dark');
-        toggleButton.textContent = '🌙';
+        toggleBtn.textContent = '🌙';
       } else {
-        body.classList.remove('dark');
-        body.classList.add('light');
+        bodyEl.classList.remove('dark');
+        bodyEl.classList.add('light');
         localStorage.setItem('theme', 'light');
-        toggleButton.textContent = '☀️';
+        toggleBtn.textContent = '☀️';
       }
     });
-    toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
+    toggleBtn.textContent = bodyEl.classList.contains('light') ? '☀️' : '🌙';
 
     // Online Indicator for Giveaway Bot
     const indicator = document.getElementById('onlineIndicatorGiveaway');
