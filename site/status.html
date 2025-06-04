@@ -16,7 +16,7 @@
     }
 
     .dashboard {
-      max-width: 600px;
+      max-width: 1200px;
       margin: 4rem auto 2rem auto;
       background: #181818;
       padding: 2rem;
@@ -29,9 +29,23 @@
       margin-bottom: 1.5rem;
     }
 
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .status-tile {
+      background: #222;
+      border-radius: 10px;
+      padding: 1.2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      text-align: left;
+    }
+
     .status-item {
-      margin-bottom: 1.2rem;
-      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
     }
 
     .status-label {
@@ -57,7 +71,7 @@
       font-size: 0.9rem;
     }
 
-    /* Dropdown styles */
+    /* Navigation styles (unchanged) */
     .dropdown {
       position: relative;
     }
@@ -98,7 +112,7 @@
 </head>
 <body>
 
-   <!-- Navigation -->
+  <!-- Navigation -->
   <header>
     <nav class="navbar">
       <div class="logo">NDM Network</div>
@@ -119,23 +133,18 @@
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
     </nav>
   </header>
-  
+
   <!-- Bot Status Dashboard -->
   <div class="dashboard">
-    <h1>Giveaway Status</h1>
-
-    <div class="status-item"><span class="status-label">Bot Name:</span> <span id="botName" class="status-value">Loading...</span></div>
-    <div class="status-item"><span class="status-label">Status:</span> <span id="status" class="status-value">Checking...</span></div>
-    <div class="status-item"><span class="status-label">Uptime:</span> <span id="uptime" class="status-value">--</span></div>
-    <div class="status-item"><span class="status-label">Servers:</span> <span id="servers" class="status-value">--</span></div>
-    <div class="status-item"><span class="status-label">Latency:</span> <span id="latency" class="status-value">--</span></div>
-    <div class="status-item"><span class="status-label">Memory:</span> <span id="memory" class="status-value">--</span></div>
-    <div class="status-item"><span class="status-label">Last Checked:</span> <span id="lastCheck" class="status-value">--</span></div>
+    <h1>NDM Bot Status</h1>
+    <div class="status-grid" id="statusGrid">
+      <!-- Bot tiles will be inserted here -->
+    </div>
   </div>
 
   <footer>&copy; 2025 NDM Network UK. All rights reserved.</footer>
 
-  <!-- Bot status check -->
+  <!-- Bot status script -->
   <script>
     function formatUptime(seconds) {
       const days = Math.floor(seconds / 86400);
@@ -145,30 +154,53 @@
       return `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     }
 
-    async function checkStatus() {
-      const statusEl = document.getElementById("status");
-      try {
-        const res = await fetch("https://giveaway.up.railway.app/status");
-        const data = await res.json();
+    const bots = [
+      { name: "Giveaway Bot", url: "https://giveaway.up.railway.app/status" },
+      { name: "Support Bot", url: "https://support.up.railway.app/status" },
+      { name: "NDM Network Bot", url: "https://network.up.railway.app/status" }
+    ];
 
-        document.getElementById("botName").textContent = data.botName || 'N/A';
-        statusEl.textContent = data.status === 'online' ? '✅ Online' : '❌ Offline';
-        statusEl.className = data.status === 'online' ? 'status-value online' : 'status-value offline';
+    async function loadBotStatuses() {
+      const grid = document.getElementById("statusGrid");
+      grid.innerHTML = '';
 
-        document.getElementById("uptime").textContent = formatUptime(data.uptimeSeconds);
-        document.getElementById("servers").textContent = data.servers ?? '--';
-        document.getElementById("latency").textContent = data.latency || '--';
-        document.getElementById("memory").textContent = data.memoryMB || '--';
-        document.getElementById("lastCheck").textContent = new Date().toLocaleString();
-      } catch (err) {
-        statusEl.textContent = "❌ Unreachable";
-        statusEl.className = "status-value offline";
-        document.getElementById("lastCheck").textContent = new Date().toLocaleString();
+      for (const bot of bots) {
+        const tile = document.createElement('div');
+        tile.className = 'status-tile';
+        tile.innerHTML = `
+          <div class="status-item"><span class="status-label">Bot Name:</span> <span class="status-value">${bot.name}</span></div>
+          <div class="status-item"><span class="status-label">Status:</span> <span class="status-value">Checking...</span></div>
+          <div class="status-item"><span class="status-label">Uptime:</span> <span class="status-value">--</span></div>
+          <div class="status-item"><span class="status-label">Servers:</span> <span class="status-value">--</span></div>
+          <div class="status-item"><span class="status-label">Latency:</span> <span class="status-value">--</span></div>
+          <div class="status-item"><span class="status-label">Memory:</span> <span class="status-value">--</span></div>
+          <div class="status-item"><span class="status-label">Last Checked:</span> <span class="status-value">--</span></div>
+        `;
+        grid.appendChild(tile);
+
+        try {
+          const res = await fetch(bot.url);
+          const data = await res.json();
+
+          const values = tile.querySelectorAll('.status-value');
+          values[1].textContent = data.status === 'online' ? '✅ Online' : '❌ Offline';
+          values[1].classList.add(data.status === 'online' ? 'online' : 'offline');
+          values[2].textContent = formatUptime(data.uptimeSeconds || 0);
+          values[3].textContent = data.servers ?? '--';
+          values[4].textContent = data.latency ?? '--';
+          values[5].textContent = data.memoryMB ?? '--';
+          values[6].textContent = new Date().toLocaleString();
+        } catch (err) {
+          const values = tile.querySelectorAll('.status-value');
+          values[1].textContent = '❌ Unreachable';
+          values[1].classList.add('offline');
+          values[6].textContent = new Date().toLocaleString();
+        }
       }
     }
 
-    checkStatus();
-    setInterval(checkStatus, 60000); // refresh every 60s
+    loadBotStatuses();
+    setInterval(loadBotStatuses, 60000);
   </script>
 
   <!-- Dark/Light Theme Toggle -->
