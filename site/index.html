@@ -29,7 +29,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- ✅ Page Layout for Discord Widget Sidebar -->
+  <!-- ✅ Sidebar Layout -->
   <style>
     .page-wrapper {
       display: grid;
@@ -150,7 +150,7 @@
       </section>
     </div>
 
-    <!-- ✅ Discord Widget Sidebar -->
+    <!-- ✅ Sidebar Widget -->
     <aside class="discord-sidebar">
       <iframe
         src="https://discord.com/widget?id=590269512985739264&theme=dark"
@@ -158,8 +158,8 @@
         height="100%"
         allowtransparency="true"
         frameborder="0"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-      ></iframe>
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+      </iframe>
     </aside>
   </div>
 
@@ -170,4 +170,58 @@
 
   <!-- Theme Toggle -->
   <script>
-    const toggleButton = document.get
+    const toggleButton = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) body.classList.add(savedTheme);
+    toggleButton.addEventListener('click', () => {
+      if (body.classList.contains('light')) {
+        body.classList.replace('light', 'dark');
+        localStorage.setItem('theme', 'dark');
+        toggleButton.textContent = '🌙';
+      } else {
+        body.classList.replace('dark', 'light');
+        localStorage.setItem('theme', 'light');
+        toggleButton.textContent = '☀️';
+      }
+    });
+    toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
+  </script>
+
+  <!-- Bot Status + User/Server Count -->
+  <script>
+    const indicator = document.getElementById("onlineIndicatorGiveaway");
+    async function updateOnlineIndicator() {
+      try {
+        const res = await fetch("https://giveaway.up.railway.app/status");
+        const data = await res.json();
+        if (data.status === "online") {
+          indicator.classList.replace("offline", "online");
+        } else {
+          indicator.classList.replace("online", "offline");
+        }
+      } catch {
+        indicator.classList.replace("online", "offline");
+      }
+    }
+    updateOnlineIndicator();
+    setInterval(updateOnlineIndicator, 60000);
+
+    const serverCountEl = document.getElementById('giveawayServerCount');
+    const userCountEl = document.getElementById('giveawayUserCount');
+    async function updateGiveawayStats() {
+      try {
+        const res = await fetch('https://giveaway.up.railway.app/status');
+        const data = await res.json();
+        serverCountEl.textContent = data.servers?.toLocaleString() || '—';
+        userCountEl.textContent = data.users?.toLocaleString() || '—';
+      } catch {
+        serverCountEl.textContent = 'N/A';
+        userCountEl.textContent = 'N/A';
+      }
+    }
+    updateGiveawayStats();
+    setInterval(updateGiveawayStats, 60000);
+  </script>
+</body>
+</html>
