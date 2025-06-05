@@ -24,17 +24,42 @@
   <meta name="twitter:image" content="https://yourdomain.xyz/og-image.png" />
 
   <!-- FontAwesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pb/VkkRUYI/jVHqZ30DWcXG5VXgW7h0l0pjIVRqdV+vwlM1dwqsZBlHjWUwELnrqoYuZwWv+1M6NSpMChsVSvA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pb/VkkRUYI/jVHqZ30DWcXG5VXgW7h0l0pjIVRqdV+vwlM1dwqsZBlHjWUwELnrqoYuZwWv+1M6NSpMChsVSvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
+
+  <!-- ✅ Page Layout for Discord Widget Sidebar -->
+  <style>
+    .page-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .page-wrapper {
+        display: block;
+      }
+
+      .discord-sidebar {
+        margin-top: 2rem;
+      }
+    }
+
+    .discord-sidebar {
+      width: 100%;
+      height: 500px;
+      background: #2c2f33;
+      border-left: 2px solid #7289da;
+      border-radius: 8px;
+      padding: 0.5rem;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+=======
   <!-- ✅ Floating Discord Widget Styles -->
   <style>
     .discord-sidebar {
@@ -58,6 +83,7 @@
   </style>
 </head>
 <body>
+
   <!-- Navigation -->
   <header>
     <nav class="navbar">
@@ -79,69 +105,86 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <main id="main" class="hero">
-    <div class="hero-content">
-      <h1>Welcome to NDM Network UK.</h1>
-      <p class="hero-tagline">
-        NDM is a small, dedicated team of developers focused on building reliable, easy-to-use Discord bots.
-        Passionate about creating tools that enhance communities, NDM is always open to growing its team and expanding into new services.
-      </p>
-    </div>
-  </main>
-
-  <!-- Services Section -->
-  <section class="section services">
-    <h2>Discord Bots</h2>
-    <p class="services-description">
-      Our bot suite is built to enhance Discord communities with powerful tools.
-    </p>
-    <div class="services-grid">
-
-      <!-- Giveaway Bot Card -->
-      <div class="service-box">
-        <img src="https://i.imgur.com/oWd49qo.png" alt="Support Team Icon" style="width: 100px; margin-bottom: 1rem;" />
-        <h3>
-          <span class="inline-indicator">
-            <span id="onlineIndicatorGiveaway" class="online-indicator offline"></span>
-          </span>
-          Giveaway Bot
-        </h3>
-        <h4>Coming Soon</h4>
-        <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
-        <div class="service-stats" style="margin: 1rem 0; font-size: 0.95rem;">
-          <span class="stat" style="display: inline-flex; align-items: center; margin-right: 1rem;">
-            <i class="fas fa-server" style="margin-right: 0.25rem;"></i>
-            Servers:&nbsp;<span id="giveawayServerCount">—</span>
-          </span>
-          <span class="stat" style="display: inline-flex; align-items: center;">
-            <i class="fas fa-users" style="margin-right: 0.25rem;"></i>
-            Users:&nbsp;<span id="giveawayUserCount"></span>
-          </span>
+  <!-- Page Content & Discord Widget -->
+  <div class="page-wrapper">
+    <div>
+      <!-- Hero Section -->
+      <main id="main" class="hero">
+        <div class="hero-content">
+          <h1>Welcome to NDM Network UK.</h1>
+          <p class="hero-tagline">
+            NDM is a small, dedicated team of developers focused on building reliable, easy-to-use Discord bots.
+            Passionate about creating tools that enhance communities, NDM is always open to growing its team and expanding into new services.
+          </p>
         </div>
-        <a href="https://discord.com/oauth2/authorize?client_id=1365054686708764703" class="btn btn-discord" role="button">
-          <img src="https://cdn.jsdelivr.net/gh/discordbranding/branding-assets/Logos/Discord-Logo-White.svg"
-            alt="Discord Logo"
-            class="btn-icon"
-            style="width: 1rem; margin-right: 0.5rem;" />
-          Add to Discord
-        </a>
-      </div>
+      </main>
 
-      <!-- Support Bot -->
-      <div class="service-box">
-        <img src="https://via.placeholder.com/60" alt="Ticket Icon" />
-        <h3>Support Team Bot</h3>
-        <p>Primarily a Ticket Support Bot—more features coming as it stabilizes.</p>
-      </div>
+      <!-- Services Section -->
+      <section class="section services">
+        <h2>Discord Bots</h2>
+        <p class="services-description">
+          Our bot suite is built to enhance Discord communities with powerful tools.
+        </p>
+        <div class="services-grid">
 
-      <!-- Status Bot -->
-      <div class="service-box">
-        <img src="https://via.placeholder.com/60" alt="Status Icon" />
-        <h3>Status Monitoring</h3>
-        <p>Bot online/offline tracking with alerts and a public status page.</p>
-      </div>
+          <!-- Giveaway Bot Card -->
+          <div class="service-box">
+            <img src="https://i.imgur.com/oWd49qo.png" alt="Support Team Icon" style="width: 100px; margin-bottom: 1rem;" />
+            <h3>
+              <span class="inline-indicator">
+                <span id="onlineIndicatorGiveaway" class="online-indicator offline"></span>
+              </span>
+              Giveaway Bot
+            </h3>
+            <h4>Coming Soon</h4>
+            <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
+            <div class="service-stats" style="margin: 1rem 0; font-size: 0.95rem;">
+              <span class="stat" style="display: inline-flex; align-items: center; margin-right: 1rem;">
+                <i class="fas fa-server" style="margin-right: 0.25rem;"></i>
+                Servers:&nbsp;<span id="giveawayServerCount">—</span>
+              </span>
+              <span class="stat" style="display: inline-flex; align-items: center;">
+                <i class="fas fa-users" style="margin-right: 0.25rem;"></i>
+                Users:&nbsp;<span id="giveawayUserCount"></span>
+              </span>
+            </div>
+            <a href="https://discord.com/oauth2/authorize?client_id=1365054686708764703" class="btn btn-discord" role="button">
+              <img src="https://i.imgur.com/oWd49qo.png" alt="Discord Logo" class="btn-icon" style="width: 1rem; margin-right: 0.5rem;" />
+              Add to Discord
+            </a>
+          </div>
+
+          <!-- Support Bot -->
+          <div class="service-box">
+            <img src="https://via.placeholder.com/60" alt="Ticket Icon" />
+            <h3>Support Team Bot</h3>
+            <p>Primarily a Ticket Support Bot—more features coming as it stabilizes.</p>
+          </div>
+
+          <!-- Status Bot -->
+          <div class="service-box">
+            <img src="https://via.placeholder.com/60" alt="Status Icon" />
+            <h3>Status Monitoring</h3>
+            <p>Bot online/offline tracking with alerts and a public status page.</p>
+          </div>
+        </div>
+      </section>
     </div>
+
+
+    <!-- ✅ Discord Sidebar (not floating) -->
+    <aside class="discord-sidebar">
+      <iframe
+        src="https://discord.com/widget?id=590269512985739264&theme=dark"
+        width="100%"
+        height="100%"
+        allowtransparency="true"
+        frameborder="0"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+      ></iframe>
+    </aside>
+  </div>
+
   </section>
 
 
@@ -170,6 +213,7 @@
       style="border-radius: 8px; max-width: 720px; margin: 1rem auto; display: block;"
     ></iframe>
   </section>
+
 
 
   <!-- Footer -->
