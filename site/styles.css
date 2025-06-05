@@ -308,7 +308,7 @@ footer {
   border-radius: 8px;
   padding: 0.5rem;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-=======
+}
 /* ✅ Discord Floating Sidebar */
 .discord-sidebar {
   position: fixed;
