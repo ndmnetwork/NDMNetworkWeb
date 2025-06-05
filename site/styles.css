@@ -298,6 +298,7 @@ footer {
   color: var(--accent);
 }
 
+
 /* ✅ Discord Sidebar (non-floating) */
 .discord-sidebar {
   width: 100%;
@@ -307,4 +308,24 @@ footer {
   border-radius: 8px;
   padding: 0.5rem;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+=======
+/* ✅ Discord Floating Sidebar */
+.discord-sidebar {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 300px;
+  height: 500px;
+  z-index: 999;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  background: #2c2f33;
+  border-left: 2px solid #7289da;
+  border-radius: 8px 0 0 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .discord-sidebar {
+    display: none;
+  }
+
 }
