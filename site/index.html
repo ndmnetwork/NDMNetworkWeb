@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NDM Network UK</title>
 
-  <!-- FontAwesome (for icons) -->
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description" content="NDM Network UK creates high-quality Discord bots for giveaways, tickets, and monitoring." />
+  <meta name="keywords" content="NDM Network, Discord bots, giveaway bot, support bot, status bot, bot hosting" />
+  <meta name="author" content="NDM Network UK" />
+
+  <!-- ✅ Open Graph -->
+  <meta property="og:title" content="NDM Network UK - Discord Bots" />
+  <meta property="og:description" content="Powerful Discord bots for community management and server automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.xyz" />
+  <meta property="og:image" content="https://yourdomain.xyz/og-image.png" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NDM Network UK - Discord Bots" />
+  <meta name="twitter:description" content="Manage giveaways, support tickets, and more with NDM's custom Discord bots." />
+  <meta name="twitter:image" content="https://yourdomain.xyz/og-image.png" />
+
+  <!-- FontAwesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -14,11 +32,10 @@
     referrerpolicy="no-referrer"
   />
 
-  <!-- Your existing stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <!-- Navigation -->
   <header>
     <nav class="navbar">
@@ -44,9 +61,9 @@
   <main id="main" class="hero">
     <div class="hero-content">
       <h1>Welcome to NDM Network UK.</h1>
-      <!-- One-line pitch, ≤8 words -->
       <p class="hero-tagline">
-        NDM is a small, dedicated team of developers focused on building reliable, easy-to-use Discord bots. Passionate about creating tools that enhance communities, NDM is always open to growing its team and expanding into new services.
+        NDM is a small, dedicated team of developers focused on building reliable, easy-to-use Discord bots.
+        Passionate about creating tools that enhance communities, NDM is always open to growing its team and expanding into new services.
       </p>
     </div>
   </main>
@@ -59,15 +76,9 @@
     </p>
     <div class="services-grid">
 
-      <!-- ====== Giveaway Bot Card (UPDATED) ====== -->
+      <!-- Giveaway Bot Card -->
       <div class="service-box">
-        <!-- Replaced placeholder image with a FontAwesome icon -->
-        <img
-        src="https://i.imgur.com/oWd49qo.png"
-        alt="Support Team Icon"
-        style="width: 100px; margin-bottom: 1rem;"
-        />
-
+        <img src="https://i.imgur.com/oWd49qo.png" alt="Support Team Icon" style="width: 100px; margin-bottom: 1rem;" />
         <h3>
           <span class="inline-indicator">
             <span id="onlineIndicatorGiveaway" class="online-indicator offline"></span>
@@ -75,61 +86,54 @@
           Giveaway Bot
         </h3>
         <h4>Coming Soon</h4>
-        <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.
-          In Development: Web Dashboard for User Management, Reports, and Analytics.
-        </p>
-
-        <!-- ====== NEW: Server & User Count Block ====== -->
+        <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
         <div class="service-stats" style="margin: 1rem 0; font-size: 0.95rem;">
-          <span
-            class="stat"
-            style="display: inline-flex; align-items: center; margin-right: 1rem;"
-          >
+          <span class="stat" style="display: inline-flex; align-items: center; margin-right: 1rem;">
             <i class="fas fa-server" style="margin-right: 0.25rem;"></i>
             Servers:&nbsp;<span id="giveawayServerCount">—</span>
           </span>
-          <span
-            class="stat"
-            style="display: inline-flex; align-items: center;"
-          >
+          <span class="stat" style="display: inline-flex; align-items: center;">
             <i class="fas fa-users" style="margin-right: 0.25rem;"></i>
             Users:&nbsp;<span id="giveawayUserCount"></span>
           </span>
         </div>
-        <!-- ====== END Server & User Count ====== -->
-
-        <a
-          href="https://discord.com/oauth2/authorize?client_id=1365054686708764703"
-          class="btn btn-discord"
-          role="button"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/discordbranding/branding-assets/Logos/Discord-Logo-White.svg"
+        <a href="https://discord.com/oauth2/authorize?client_id=1365054686708764703" class="btn btn-discord" role="button">
+          <img src="https://cdn.jsdelivr.net/gh/discordbranding/branding-assets/Logos/Discord-Logo-White.svg"
             alt="Discord Logo"
             class="btn-icon"
-            style="width: 1rem; margin-right: 0.5rem;"
-          />
+            style="width: 1rem; margin-right: 0.5rem;" />
           Add to Discord
         </a>
       </div>
-      <!-- ====== End Giveaway Bot Card ====== -->
 
-
-      <!-- Support Team Bot Card (unchanged) -->
+      <!-- Support Bot -->
       <div class="service-box">
         <img src="https://via.placeholder.com/60" alt="Ticket Icon" />
         <h3>Support Team Bot</h3>
         <p>Primarily a Ticket Support Bot—more features coming as it stabilizes.</p>
       </div>
 
-      <!-- Status Monitoring Bot Card (unchanged) -->
+      <!-- Status Bot -->
       <div class="service-box">
         <img src="https://via.placeholder.com/60" alt="Status Icon" />
         <h3>Status Monitoring</h3>
         <p>Bot online/offline tracking with alerts and a public status page.</p>
       </div>
-
     </div>
+  </section>
+
+  <!-- ✅ DISCORD WIDGET SECTION -->
+  <section style="padding: 2rem 0; text-align: center;">
+    <h2>Join Our Discord Server</h2>
+    <iframe
+      src="https://discord.com/widget?id=590269512985739264&theme=dark"
+      width="100%"
+      height="350"
+      allowtransparency="true"
+      frameborder="0"
+      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+      style="border-radius: 8px; max-width: 720px; margin: 1rem auto; display: block;"
+    ></iframe>
   </section>
 
   <!-- Footer -->
@@ -137,77 +141,58 @@
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
 
-  <!--────────────────────────────────────────────────────────────────────────
-    Dark/Light Mode Toggle Script
-  ────────────────────────────────────────────────────────────────────────-->
+  <!-- Theme Toggle -->
   <script>
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) body.classList.add(savedTheme);
-
     toggleButton.addEventListener('click', () => {
       if (body.classList.contains('light')) {
-        body.classList.remove('light');
-        body.classList.add('dark');
+        body.classList.replace('light', 'dark');
         localStorage.setItem('theme', 'dark');
         toggleButton.textContent = '🌙';
       } else {
-        body.classList.remove('dark');
-        body.classList.add('light');
+        body.classList.replace('dark', 'light');
         localStorage.setItem('theme', 'light');
         toggleButton.textContent = '☀️';
       }
     });
-
     toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
   </script>
 
-  <!--────────────────────────────────────────────────────────────────────────
-    Online Indicator + Server/User Count Script
-  ────────────────────────────────────────────────────────────────────────-->
+  <!-- Bot Status + User/Server Count -->
   <script>
-    // Online Indicator for Giveaway Bot
     const indicator = document.getElementById("onlineIndicatorGiveaway");
     async function updateOnlineIndicator() {
       try {
         const res = await fetch("https://giveaway.up.railway.app/status");
         const data = await res.json();
         if (data.status === "online") {
-          indicator.classList.remove("offline");
-          indicator.classList.add("online");
+          indicator.classList.replace("offline", "online");
         } else {
-          indicator.classList.remove("online");
-          indicator.classList.add("offline");
+          indicator.classList.replace("online", "offline");
         }
       } catch {
-        // If fetch fails, show offline indicator
-        indicator.classList.remove("online");
-        indicator.classList.add("offline");
+        indicator.classList.replace("online", "offline");
       }
     }
     updateOnlineIndicator();
     setInterval(updateOnlineIndicator, 60000);
 
-    // Server/User Counts for Giveaway Bot
     const serverCountEl = document.getElementById('giveawayServerCount');
-    const userCountEl   = document.getElementById('giveawayUserCount');
-
+    const userCountEl = document.getElementById('giveawayUserCount');
     async function updateGiveawayStats() {
       try {
-        // Replace with your real endpoint that returns JSON: { servers: number, users: number }
-        const res  = await fetch('https://giveaway.up.railway.app/status');
+        const res = await fetch('https://giveaway.up.railway.app/status');
         const data = await res.json();
-        serverCountEl.textContent = data.servers.toLocaleString();
-        userCountEl.textContent   = data.users.toLocaleString();
-      } catch (err) {
-        console.warn('Could not fetch bot stats:', err);
+        serverCountEl.textContent = data.servers?.toLocaleString() || '—';
+        userCountEl.textContent = data.users?.toLocaleString() || '—';
+      } catch {
         serverCountEl.textContent = 'N/A';
-        userCountEl.textContent   = 'N/A';
+        userCountEl.textContent = 'N/A';
       }
     }
-
-    // Initial fetch + poll every 60 seconds
     updateGiveawayStats();
     setInterval(updateGiveawayStats, 60000);
   </script>
