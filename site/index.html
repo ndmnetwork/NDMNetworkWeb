@@ -29,7 +29,6 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-
   <!-- ✅ Page Layout for Discord Widget Sidebar -->
   <style>
     .page-wrapper {
@@ -59,26 +58,6 @@
       border-radius: 8px;
       padding: 0.5rem;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-=======
-  <!-- ✅ Floating Discord Widget Styles -->
-  <style>
-    .discord-sidebar {
-      position: fixed;
-      top: 100px;
-      right: 0;
-      width: 300px;
-      height: 500px;
-      z-index: 999;
-      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-      background: #2c2f33;
-      border-left: 2px solid #7289da;
-      border-radius: 8px 0 0 8px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .discord-sidebar {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -105,7 +84,7 @@
     </nav>
   </header>
 
-  <!-- Page Content & Discord Widget -->
+  <!-- Page Content + Sidebar -->
   <div class="page-wrapper">
     <div>
       <!-- Hero Section -->
@@ -171,8 +150,7 @@
       </section>
     </div>
 
-
-    <!-- ✅ Discord Sidebar (not floating) -->
+    <!-- ✅ Discord Widget Sidebar -->
     <aside class="discord-sidebar">
       <iframe
         src="https://discord.com/widget?id=590269512985739264&theme=dark"
@@ -185,37 +163,6 @@
     </aside>
   </div>
 
-  </section>
-
-
-  <!-- ✅ DISCORD WIDGET SIDEBAR -->
-  <div class="discord-sidebar">
-    <iframe
-      src="https://discord.com/widget?id=590269512985739264&theme=dark"
-      width="100%"
-      height="500"
-      allowtransparency="true"
-      frameborder="0"
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    ></iframe>
-  </div>
-
-  <!-- ✅ DISCORD WIDGET SECTION -->
-  <section style="padding: 2rem 0; text-align: center;">
-    <h2>Join Our Discord Server</h2>
-    <iframe
-      src="https://discord.com/widget?id=590269512985739264&theme=dark"
-      width="100%"
-      height="350"
-      allowtransparency="true"
-      frameborder="0"
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-      style="border-radius: 8px; max-width: 720px; margin: 1rem auto; display: block;"
-    ></iframe>
-  </section>
-
-
-
   <!-- Footer -->
   <footer>
     &copy; 2025 NDM Network UK. All rights reserved.
@@ -223,58 +170,4 @@
 
   <!-- Theme Toggle -->
   <script>
-    const toggleButton = document.getElementById('themeToggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) body.classList.add(savedTheme);
-    toggleButton.addEventListener('click', () => {
-      if (body.classList.contains('light')) {
-        body.classList.replace('light', 'dark');
-        localStorage.setItem('theme', 'dark');
-        toggleButton.textContent = '🌙';
-      } else {
-        body.classList.replace('dark', 'light');
-        localStorage.setItem('theme', 'light');
-        toggleButton.textContent = '☀️';
-      }
-    });
-    toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
-  </script>
-
-  <!-- Bot Status + User/Server Count -->
-  <script>
-    const indicator = document.getElementById("onlineIndicatorGiveaway");
-    async function updateOnlineIndicator() {
-      try {
-        const res = await fetch("https://giveaway.up.railway.app/status");
-        const data = await res.json();
-        if (data.status === "online") {
-          indicator.classList.replace("offline", "online");
-        } else {
-          indicator.classList.replace("online", "offline");
-        }
-      } catch {
-        indicator.classList.replace("online", "offline");
-      }
-    }
-    updateOnlineIndicator();
-    setInterval(updateOnlineIndicator, 60000);
-
-    const serverCountEl = document.getElementById('giveawayServerCount');
-    const userCountEl = document.getElementById('giveawayUserCount');
-    async function updateGiveawayStats() {
-      try {
-        const res = await fetch('https://giveaway.up.railway.app/status');
-        const data = await res.json();
-        serverCountEl.textContent = data.servers?.toLocaleString() || '—';
-        userCountEl.textContent = data.users?.toLocaleString() || '—';
-      } catch {
-        serverCountEl.textContent = 'N/A';
-        userCountEl.textContent = 'N/A';
-      }
-    }
-    updateGiveawayStats();
-    setInterval(updateGiveawayStats, 60000);
-  </script>
-</body>
-</html>
+    const toggleButton = document.get
