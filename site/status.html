@@ -5,110 +5,126 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NDM Bot Status</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      background: #0f0f0f;
-      color: #fff;
-      font-family: system-ui, sans-serif;
-      text-align: center;
-      padding: 0;
-      margin: 0;
-    }
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --text: #ffffff;
+    --accent: #00bcd4;
+    --card: #222;
+  }
 
-    .dashboard {
-      max-width: 1200px;
-      margin: 4rem auto 2rem auto;
-      background: #181818;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
+  body.light {
+    --bg: #f9f9f9;
+    --text: #111;
+    --accent: #007bff;
+    --card: #ffffff;
+  }
 
-    .dashboard h1 {
-      color: #00bcd4;
-      margin-bottom: 1.5rem;
-    }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, sans-serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+  }
 
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
+  .dashboard {
+    max-width: 1200px;
+    margin: 4rem auto 2rem auto;
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
 
-    .status-tile {
-      background: #222;
-      border-radius: 10px;
-      padding: 1.2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      text-align: left;
-    }
+  .dashboard h1 {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
 
-    .status-item {
-      margin-bottom: 0.8rem;
-      font-size: 1rem;
-    }
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
 
-    .status-label {
-      font-weight: bold;
-      color: #aaa;
-    }
+  .status-tile {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+  }
 
-    .status-value {
-      color: #fff;
-    }
+  .status-item {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
 
-    .offline {
-      color: #ff5c5c;
-    }
+  .status-label {
+    font-weight: bold;
+    color: #aaa;
+  }
 
-    .online {
-      color: #00ff99;
-    }
+  .status-value {
+    color: var(--text);
+  }
 
-    footer {
-      margin-top: 3rem;
-      color: #888;
-      font-size: 0.9rem;
-    }
+  .offline {
+    color: #ff5c5c !important;
+  }
 
-    /* Navigation styles (unchanged) */
-    .dropdown {
-      position: relative;
-    }
+  .online {
+    color: #00ff99 !important;
+  }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: var(--card, #222);
-      min-width: 150px;
-      top: 100%;
-      left: 0;
-      z-index: 1001;
-      border-radius: 6px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    }
+  footer {
+    margin-top: 3rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
 
-    .dropdown-content li {
-      display: block;
-    }
+  /* Dropdown Styles (unchanged) */
+  .dropdown {
+    position: relative;
+  }
 
-    .dropdown-content a {
-      display: block;
-      padding: 0.75rem 1rem;
-      color: var(--text, #fff);
-      text-align: left;
-      white-space: nowrap;
-    }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--card);
+    min-width: 150px;
+    top: 100%;
+    left: 0;
+    z-index: 1001;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
 
-    .dropdown-content a:hover {
-      background-color: var(--accent, #00bcd4);
-      color: #fff;
-    }
+  .dropdown-content li {
+    display: block;
+  }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-  </style>
+  .dropdown-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .dropdown-content a:hover {
+    background-color: var(--accent);
+    color: #fff;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+</style>
+
 </head>
 <body>
 
