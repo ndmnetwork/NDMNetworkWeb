@@ -5,6 +5,8 @@
   --card: #222;
   --nav: #181818;
   --footer: #111;
+  --color-bg-accent: #1a1a1a;
+  --color-text-muted: #cccccc;
 }
 
 body.light {
@@ -14,6 +16,8 @@ body.light {
   --card: #ffffff;
   --nav: #ffffff;
   --footer: #f1f1f1;
+  --color-bg-accent: #eaeaea;
+  --color-text-muted: #444444;
 }
 
 body {
@@ -34,6 +38,7 @@ body {
   padding: 0 1rem;
 }
 
+/* Responsive Layout */
 @media screen and (max-width: 1024px) {
   .page-wrapper {
     display: block;
@@ -221,7 +226,7 @@ footer {
   display: block;
 }
 
-/* Online Indicator Styles */
+/* Online Indicator */
 .inline-indicator {
   display: inline-block;
   vertical-align: middle;
@@ -268,6 +273,7 @@ footer {
   text-align: center;
   padding: 4rem 1rem;
   background: var(--color-bg-accent);
+  color: var(--text);
 }
 
 .hero-tagline {
@@ -308,7 +314,7 @@ footer {
   color: var(--accent);
 }
 
-/* ✅ Non-Floating Discord Sidebar */
+/* Discord Sidebar */
 .discord-sidebar {
   max-width: 320px;
   width: 100%;

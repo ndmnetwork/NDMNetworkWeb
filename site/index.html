@@ -29,7 +29,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- ✅ Sidebar Layout -->
+  <!-- Inline Fixes for Widget -->
   <style>
     .page-wrapper {
       display: grid;
@@ -39,14 +39,45 @@
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    
-    .discord-sidebar iframe {
-  visibility: visible !important;
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+
+    .discord-sidebar {
+      max-width: 320px;
+      width: 100%;
+      height: 500px;
+      background: #2c2f33;
+      border-left: 2px solid #7289da;
+      border-radius: 8px;
+      padding: 0.5rem;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    #discordWidgetContainer iframe {
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .page-wrapper {
+        display: block;
+      }
+
+      .discord-sidebar {
+        width: 100%;
+        margin-top: 2rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .discord-sidebar {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -140,14 +171,7 @@
 
     <!-- ✅ Sidebar Widget -->
     <aside class="discord-sidebar">
-      <iframe
-        src="https://discord.com/widget?id=590269512985739264&theme=dark"
-        width="100%"
-        height="100%"
-        allowtransparency="true"
-        frameborder="0"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-      </iframe>
+      <div id="discordWidgetContainer"></div>
     </aside>
   </div>
 
@@ -156,12 +180,15 @@
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
 
-  <!-- Theme Toggle -->
+  <!-- Theme Toggle Script -->
   <script>
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
     const savedTheme = localStorage.getItem('theme');
+
     if (savedTheme) body.classList.add(savedTheme);
+    else body.classList.add('dark'); // default
+
     toggleButton.addEventListener('click', () => {
       if (body.classList.contains('light')) {
         body.classList.replace('light', 'dark');
@@ -172,7 +199,12 @@
         localStorage.setItem('theme', 'light');
         toggleButton.textContent = '☀️';
       }
+
+      // Update Discord widget on theme toggle
+      const newTheme = body.classList.contains('light') ? 'light' : 'dark';
+      loadDiscordWidget(newTheme);
     });
+
     toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
   </script>
 
@@ -192,11 +224,13 @@
         indicator.classList.replace("online", "offline");
       }
     }
+
     updateOnlineIndicator();
     setInterval(updateOnlineIndicator, 60000);
 
     const serverCountEl = document.getElementById('giveawayServerCount');
     const userCountEl = document.getElementById('giveawayUserCount');
+
     async function updateGiveawayStats() {
       try {
         const res = await fetch('https://giveaway.up.railway.app/status');
@@ -208,8 +242,33 @@
         userCountEl.textContent = 'N/A';
       }
     }
+
     updateGiveawayStats();
     setInterval(updateGiveawayStats, 60000);
+  </script>
+
+  <!-- Discord Widget Loader (Dynamic Theme Support) -->
+  <script>
+    function loadDiscordWidget(theme) {
+      const container = document.getElementById('discordWidgetContainer');
+      container.innerHTML = '';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://discord.com/widget?id=590269512985739264&theme=${theme}`;
+      iframe.allowTransparency = true;
+      iframe.frameBorder = "0";
+      iframe.sandbox = "allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts";
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = 'none';
+      iframe.style.visibility = 'visible';
+      iframe.style.display = 'block';
+
+      container.appendChild(iframe);
+    }
+
+    const initialTheme = document.body.classList.contains('light') ? 'light' : 'dark';
+    loadDiscordWidget(initialTheme);
   </script>
 </body>
 </html>
