@@ -374,3 +374,28 @@ footer {
 .offline {
   color: #ff5c5c !important;
 }
+
+.feedback-panel {
+  background-color: var(--card);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-panel h3 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.feedback-panel .comment {
+  background-color: var(--color-bg-accent);
+  padding: 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  line-height: 1.4;
+}
