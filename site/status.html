@@ -5,126 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NDM Bot Status</title>
   <link rel="stylesheet" href="styles.css" />
-<style>
-  :root {
-    --bg: #0f0f0f;
-    --text: #ffffff;
-    --accent: #00bcd4;
-    --card: #222;
-  }
-
-  body.light {
-    --bg: #f9f9f9;
-    --text: #111;
-    --accent: #007bff;
-    --card: #ffffff;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: system-ui, sans-serif;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .dashboard {
-    max-width: 1200px;
-    margin: 4rem auto 2rem auto;
-    background: var(--card);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  }
-
-  .dashboard h1 {
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-  }
-
-  .status-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .status-tile {
-    background: var(--card);
-    border-radius: 10px;
-    padding: 1.2rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    text-align: left;
-  }
-
-  .status-item {
-    margin-bottom: 0.8rem;
-    font-size: 1rem;
-  }
-
-  .status-label {
-    font-weight: bold;
-    color: #aaa;
-  }
-
-  .status-value {
-    color: var(--text);
-  }
-
-  .offline {
-    color: #ff5c5c !important;
-  }
-
-  .online {
-    color: #00ff99 !important;
-  }
-
-  footer {
-    margin-top: 3rem;
-    color: #888;
-    font-size: 0.9rem;
-  }
-
-  /* Dropdown Styles (unchanged) */
-  .dropdown {
-    position: relative;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--card);
-    min-width: 150px;
-    top: 100%;
-    left: 0;
-    z-index: 1001;
-    border-radius: 6px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-  }
-
-  .dropdown-content li {
-    display: block;
-  }
-
-  .dropdown-content a {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: var(--text);
-    text-align: left;
-    white-space: nowrap;
-  }
-
-  .dropdown-content a:hover {
-    background-color: var(--accent);
-    color: #fff;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-</style>
-
 </head>
 <body>
 
@@ -135,7 +15,7 @@
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li class="dropdown">
-          <a href="javascript:void(0)" id="botsDropdownToggle">Bots ▾</a>
+          <a href="javascript:void(0)">Bots ▾</a>
           <ul class="dropdown-content">
             <li><a href="giveaway.html">Giveaway</a></li>
             <li><a href="support.html">Support Team</a></li>
@@ -150,17 +30,25 @@
     </nav>
   </header>
 
-  <!-- Bot Status Dashboard -->
-  <div class="dashboard">
-    <h1>NDM Bot Status</h1>
-    <div class="status-grid" id="statusGrid">
-      <!-- Bot tiles will be inserted here -->
+  <!-- Page Content -->
+  <div class="page-wrapper">
+    <main class="section">
+      <div class="dashboard">
+        <h1>NDM Bot Status</h1>
+        <div class="status-grid" id="statusGrid">
+          <!-- Bot tiles will be inserted here -->
+        </div>
+      </div>
+    </main>
+
+    <div class="discord-sidebar">
+      <!-- Future widgets or server preview go here -->
     </div>
   </div>
 
-  <footer>&copy; 2025 NDM Network UK. All rights reserved.</footer>
+  <footer class="site-footer">© 2025 NDM Network UK. All rights reserved.</footer>
 
-  <!-- Bot status script -->
+  <!-- Bot Status Script -->
   <script>
     function formatUptime(seconds) {
       const days = Math.floor(seconds / 86400);
@@ -219,7 +107,7 @@
     setInterval(loadBotStatuses, 60000);
   </script>
 
-  <!-- Dark/Light Theme Toggle -->
+  <!-- Theme Toggle -->
   <script>
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
@@ -242,28 +130,5 @@
 
     toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
   </script>
-
-
-<script>
-// Touch-friendly dropdown toggle for "Bots ▾"
-document.addEventListener("DOMContentLoaded", () => {
-  const dropdownToggle = document.getElementById("botsDropdownToggle");
-  const dropdown = dropdownToggle?.closest(".dropdown");
-
-  if (dropdownToggle && dropdown) {
-    dropdownToggle.addEventListener("click", (e) => {
-      e.preventDefault();
-      dropdown.classList.toggle("open");
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove("open");
-      }
-    });
-  }
-});
-</script>
-
 </body>
 </html>
