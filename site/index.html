@@ -24,59 +24,19 @@
   <meta name="twitter:image" content="https://yourdomain.xyz/og-image.png" />
 
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pb/VkkRUYI/jVHqZ30DWcXG5VXgW7h0l0pjIVRqdV+vwlM1dwqsZBlHjWUwELnrqoYuZwWv+1M6NSpMChsVSvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Inline Fixes for Widget -->
   <style>
-    .page-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    .discord-sidebar {
-      max-width: 320px;
-      width: 100%;
-      height: 500px;
-      background: #2c2f33;
-      border-left: 2px solid #7289da;
-      border-radius: 8px;
-      padding: 0.5rem;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-
-    #discordWidgetContainer iframe {
-      visibility: visible !important;
-      opacity: 1 !important;
-      display: block !important;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    @media screen and (max-width: 1024px) {
-      .page-wrapper {
-        display: block;
-      }
-
-      .discord-sidebar {
-        width: 100%;
-        margin-top: 2rem;
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      .discord-sidebar {
-        display: none;
-      }
+    .site-footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: var(--footer);
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -137,17 +97,11 @@
             <h4>Coming Soon</h4>
             <p>Slash commands for easy giveaway setup, real-time updates, and rerolls.</p>
             <div class="service-stats" style="margin: 1rem 0; font-size: 0.95rem;">
-              <span class="stat" style="display: inline-flex; align-items: center; margin-right: 1rem;">
-                <i class="fas fa-server" style="margin-right: 0.25rem;"></i>
-                Servers:&nbsp;<span id="giveawayServerCount">—</span>
-              </span>
-              <span class="stat" style="display: inline-flex; align-items: center;">
-                <i class="fas fa-users" style="margin-right: 0.25rem;"></i>
-                Users:&nbsp;<span id="giveawayUserCount"></span>
-              </span>
+              <span class="stat"><i class="fas fa-server"></i> Servers: <span id="giveawayServerCount">—</span></span>
+              <span class="stat"><i class="fas fa-users"></i> Users: <span id="giveawayUserCount">—</span></span>
             </div>
             <a href="https://discord.com/oauth2/authorize?client_id=1365054686708764703" class="btn btn-discord" role="button">
-              <img src="https://i.imgur.com/oWd49qo.png" alt="Discord Logo" class="btn-icon" style="width: 1rem; margin-right: 0.5rem;" />
+              <img src="https://i.imgur.com/oWd49qo.png" alt="Discord Logo" class="btn-icon" />
               Add to Discord
             </a>
           </div>
@@ -169,8 +123,14 @@
       </section>
     </div>
 
-  <!-- Footer -->
-  <footer>
+    <!-- Sidebar placeholder -->
+    <div class="discord-sidebar">
+      <!-- Future widgets or server preview go here -->
+    </div>
+  </div>
+
+  <!-- Footer moved below sidebar -->
+  <footer class="site-footer">
     &copy; 2025 NDM Network UK. All rights reserved.
   </footer>
 
@@ -179,7 +139,6 @@
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
     const savedTheme = localStorage.getItem('theme');
-
     if (savedTheme) body.classList.add(savedTheme);
     else body.classList.add('dark'); // default
 
@@ -193,27 +152,19 @@
         localStorage.setItem('theme', 'light');
         toggleButton.textContent = '☀️';
       }
-
-      // Update Discord widget on theme toggle
-      const newTheme = body.classList.contains('light') ? 'light' : 'dark';
-      loadDiscordWidget(newTheme);
     });
 
     toggleButton.textContent = body.classList.contains('light') ? '☀️' : '🌙';
   </script>
 
-  <!-- Bot Status + User/Server Count -->
+  <!-- Bot Stats -->
   <script>
     const indicator = document.getElementById("onlineIndicatorGiveaway");
     async function updateOnlineIndicator() {
       try {
         const res = await fetch("https://giveaway.up.railway.app/status");
         const data = await res.json();
-        if (data.status === "online") {
-          indicator.classList.replace("offline", "online");
-        } else {
-          indicator.classList.replace("online", "offline");
-        }
+        indicator.classList.replace("offline", data.status === "online" ? "online" : "offline");
       } catch {
         indicator.classList.replace("online", "offline");
       }
@@ -241,26 +192,26 @@
     setInterval(updateGiveawayStats, 60000);
   </script>
 
-<script>
-// Touch-friendly dropdown toggle for "Bots ▾"
-document.addEventListener("DOMContentLoaded", () => {
-  const dropdownToggle = document.getElementById("botsDropdownToggle");
-  const dropdown = dropdownToggle?.closest(".dropdown");
+  <!-- Touch-Friendly Dropdown -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dropdownToggle = document.getElementById("botsDropdownToggle");
+      const dropdown = dropdownToggle?.closest(".dropdown");
 
-  if (dropdownToggle && dropdown) {
-    dropdownToggle.addEventListener("click", (e) => {
-      e.preventDefault();
-      dropdown.classList.toggle("open");
-    });
+      if (dropdownToggle && dropdown) {
+        dropdownToggle.addEventListener("click", (e) => {
+          e.preventDefault();
+          dropdown.classList.toggle("open");
+        });
 
-    document.addEventListener("click", (e) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove("open");
+        document.addEventListener("click", (e) => {
+          if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove("open");
+          }
+        });
       }
     });
-  }
-});
-</script>
+  </script>
 
 </body>
 </html>

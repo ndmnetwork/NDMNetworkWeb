@@ -313,3 +313,13 @@ footer {
   margin-right: 0.25rem;
   color: var(--accent);
 }
+
+/* Site Footer (Bottom placement) */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--footer);
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
