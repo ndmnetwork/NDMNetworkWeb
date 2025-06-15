@@ -89,7 +89,7 @@
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li class="dropdown">
-          <a href="javascript:void(0)">Bots ▾</a>
+          <a href="javascript:void(0)" id="botsDropdownToggle">Bots ▾</a>
           <ul class="dropdown-content">
             <li><a href="giveaway.html">Giveaway</a></li>
             <li><a href="support.html">Support Team</a></li>
@@ -240,5 +240,27 @@
     updateGiveawayStats();
     setInterval(updateGiveawayStats, 60000);
   </script>
+
+<script>
+// Touch-friendly dropdown toggle for "Bots ▾"
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdownToggle = document.getElementById("botsDropdownToggle");
+  const dropdown = dropdownToggle?.closest(".dropdown");
+
+  if (dropdownToggle && dropdown) {
+    dropdownToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      dropdown.classList.toggle("open");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("open");
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>
